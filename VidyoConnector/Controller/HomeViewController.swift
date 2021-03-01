@@ -26,6 +26,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var displayName: UITextField!
     @IBOutlet weak var pin: UITextField!
     
+    @IBOutlet weak var startConference: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         VCConnectorPkg.vcInitialize()
@@ -35,7 +37,7 @@ class HomeViewController: UIViewController {
         displayName.text = testParams.displayName
         pin.text = testParams.pin
         
-        
+        startConference.layer.cornerRadius = 12
     }
     
     @IBAction func onConferenceRequested(_ sender: Any) {
