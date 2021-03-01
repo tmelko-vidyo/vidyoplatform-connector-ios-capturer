@@ -16,9 +16,9 @@ struct ConnectParams {
 
 class HomeViewController: UIViewController {
     
-    let testParams = ConnectParams(portal: "sandbox.vidyocloudstaging.com",
-                                   roomKey: "CsUV4kkpdy",
-                                   displayName: "Taras Mobile",
+    let presetParams = ConnectParams(portal: "YOUR.PORTAL.com",
+                                   roomKey: "YOUR.ROOM.KEY",
+                                   displayName: "John Doe",
                                    pin: "")
 
     @IBOutlet weak var portal: UITextField!
@@ -32,10 +32,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         VCConnectorPkg.vcInitialize()
 
-        portal.text = testParams.portal
-        roomKey.text = testParams.roomKey
-        displayName.text = testParams.displayName
-        pin.text = testParams.pin
+        portal.text = presetParams.portal
+        roomKey.text = presetParams.roomKey
+        displayName.text = presetParams.displayName
+        pin.text = presetParams.pin
         
         startConference.layer.cornerRadius = 12
     }

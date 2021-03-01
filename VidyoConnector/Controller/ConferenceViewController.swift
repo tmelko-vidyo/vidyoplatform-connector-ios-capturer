@@ -18,6 +18,8 @@ class ConferenceViewController: UIViewController {
     @IBOutlet weak var libVersion: UILabel!
     @IBOutlet weak var progress: UIActivityIndicatorView!
 
+    @IBOutlet weak var localView: UIView!
+
     public var connectParams: ConnectParams?
     
     private var connector: VCConnector?
@@ -29,18 +31,19 @@ class ConferenceViewController: UIViewController {
         
         var connected = false
         var disconnectingWithQuit = false
-        
     }
     
     var callState = CallState()
     
+    var captureManager: CaptureManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        connector = VCConnector(UnsafeMutableRawPointer(&videoView),
+        connector = VCConnector(&videoView,
                                 viewStyle: .default,
                                 remoteParticipants: 8,
-                                logFileFilter: UnsafePointer("debug@VidyoClient"),
-                                logFileName: UnsafePointer(""),
+                                logFileFilter: "warning debug@VidyoClient debug@VidyoConnector".cString(using: .utf8),
+                                logFileName: "".cString(using: .utf8),
                                 userData: 0)
         
         // Orientation change observer
@@ -55,10 +58,13 @@ class ConferenceViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onBackground),
                                                name: UIApplication.willResignActiveNotification, object: nil)
         
-        libVersion.text = "Version: \(connector?.getVersion()!)"
+        libVersion.text = "Version: \(connector!.getVersion()!)"
         
         progress.isHidden = true
         progress.startAnimating()
+                
+        captureManager = CaptureManager(connector: connector, previewView: videoView)
+        captureManager.startCapturer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,7 +79,9 @@ class ConferenceViewController: UIViewController {
         connector?.select(nil as VCLocalMicrophone?)
         connector?.select(nil as VCLocalSpeaker?)
         
-        connector?.hideView(UnsafeMutableRawPointer(&videoView))
+        captureManager.destroy()
+        
+        connector?.hideView(&videoView)
         connector?.disable()
         
         connector = nil
@@ -241,17 +249,15 @@ extension ConferenceViewController {
     private func refreshUI() {
         DispatchQueue.main.async {
             [weak self] in
-            guard let this = self else { fatalError("Can't maintain self reference.") }
+            guard let this = self else { return }
             
-            this.connector?.showView(at: UnsafeMutableRawPointer(&this.videoView),
+            this.connector?.showView(at: &this.videoView,
                                      x: 0,
                                      y: 0,
                                      width: UInt32(this.videoView.frame.size.width),
                                      height: UInt32(this.videoView.frame.size.height))
         }
     }
-    
-    // MARK: Private functions
     
     private func isInCallingState() -> Bool {
         if let connector = connector {

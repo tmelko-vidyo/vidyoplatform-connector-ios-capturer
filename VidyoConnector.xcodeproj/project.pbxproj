@@ -13,6 +13,7 @@
 		193FB6E125ED0BDF005CC825 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193FB6E025ED0BDF005CC825 /* CoreMedia.framework */; };
 		193FB6E325ED0BE8005CC825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193FB6E225ED0BE8005CC825 /* SystemConfiguration.framework */; };
 		193FB6E625ED0C04005CC825 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193FB6E525ED0C04005CC825 /* CoreLocation.framework */; };
+		193FB6EB25ED19F4005CC825 /* CaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193FB6EA25ED19F4005CC825 /* CaptureManager.swift */; };
 		1968612C25ECF7EC00F85799 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968612B25ECF7EC00F85799 /* AppDelegate.swift */; };
 		1968612E25ECF7EC00F85799 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968612D25ECF7EC00F85799 /* SceneDelegate.swift */; };
 		1968613025ECF7EC00F85799 /* ConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968612F25ECF7EC00F85799 /* ConferenceViewController.swift */; };
@@ -28,6 +29,7 @@
 		193FB6E025ED0BDF005CC825 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		193FB6E225ED0BE8005CC825 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		193FB6E525ED0C04005CC825 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		193FB6EA25ED19F4005CC825 /* CaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureManager.swift; sourceTree = "<group>"; };
 		1968612825ECF7EC00F85799 /* VidyoConnector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VidyoConnector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1968612B25ECF7EC00F85799 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1968612D25ECF7EC00F85799 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		193FB6E925ED19DC005CC825 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				193FB6EA25ED19F4005CC825 /* CaptureManager.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
 		1968611F25ECF7EC00F85799 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 		1968612A25ECF7EC00F85799 /* VidyoConnector */ = {
 			isa = PBXGroup;
 			children = (
+				193FB6E925ED19DC005CC825 /* Capture */,
 				1968614625ECF84D00F85799 /* Controller */,
 				1968614325ECF81200F85799 /* Storyboard */,
 				1968612B25ECF7EC00F85799 /* AppDelegate.swift */,
@@ -190,6 +201,7 @@
 				1968612C25ECF7EC00F85799 /* AppDelegate.swift in Sources */,
 				1968612E25ECF7EC00F85799 /* SceneDelegate.swift in Sources */,
 				1968614825ECF87600F85799 /* HomeViewController.swift in Sources */,
+				193FB6EB25ED19F4005CC825 /* CaptureManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
