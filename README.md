@@ -1,5 +1,6 @@
-# VidyoPlatform Reference App for iOS
+# VidyoPlatform Reference App for iOS (Swift)
 VidyoPlatform reference application highlighting how to integrate video chat into a native iOS app.
+Additionally implemented VirtulaVideoSource/VirtulaCamera API.
 
 Developer documentation: https://vidyo.github.io/vidyoplatform.github.io
 
