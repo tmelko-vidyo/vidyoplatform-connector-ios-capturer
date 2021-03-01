@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "callEnd.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
