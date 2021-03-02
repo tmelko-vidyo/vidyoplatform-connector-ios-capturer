@@ -337,6 +337,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/VidyoConnector/VidyoClientIOS.framework/Headers";
 				INFOPLIST_FILE = VidyoConnector/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,6 +363,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/VidyoConnector/VidyoClientIOS.framework/Headers";
 				INFOPLIST_FILE = VidyoConnector/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

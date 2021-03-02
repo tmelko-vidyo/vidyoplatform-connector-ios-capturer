@@ -43,7 +43,11 @@ class HomeViewController: UIViewController {
     @IBAction func onConferenceRequested(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let conference = storyboard.instantiateViewController(withIdentifier: "Conference") as! ConferenceViewController
-        conference.isModalInPresentation = true
+        if #available(iOS 13.0, *) {
+            conference.isModalInPresentation = true
+        } else {
+            // Fallback on earlier versions
+        }
         
         conference.connectParams = ConnectParams(portal: self.portal.text!,
                                                  roomKey: self.roomKey.text!,
