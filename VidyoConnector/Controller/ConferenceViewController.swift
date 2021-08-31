@@ -35,8 +35,6 @@ class ConferenceViewController: UIViewController {
     
     var callState = CallState()
     
-    var captureManager: CaptureManager!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         connector = VCConnector(&videoView,
@@ -62,9 +60,6 @@ class ConferenceViewController: UIViewController {
         
         progress.isHidden = true
         progress.startAnimating()
-                
-        captureManager = CaptureManager(connector: connector, previewView: videoView)
-        captureManager.startCapturer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,8 +73,6 @@ class ConferenceViewController: UIViewController {
         connector?.select(nil as VCLocalCamera?)
         connector?.select(nil as VCLocalMicrophone?)
         connector?.select(nil as VCLocalSpeaker?)
-        
-        captureManager.destroy()
         
         connector?.hideView(&videoView)
         connector?.disable()
