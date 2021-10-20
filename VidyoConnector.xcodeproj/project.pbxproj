@@ -19,10 +19,10 @@
 		1968613525ECF7ED00F85799 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1968613425ECF7ED00F85799 /* Assets.xcassets */; };
 		1968614125ECF80500F85799 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1968614025ECF80500F85799 /* Main.storyboard */; };
 		1968614825ECF87600F85799 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968614725ECF87600F85799 /* HomeViewController.swift */; };
+		19D5F2DD2720224600436446 /* BNBEffectPlayerC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D5F2DC2720224600436446 /* BNBEffectPlayerC.xcframework */; };
+		19D5F2DE2720224600436446 /* BNBEffectPlayerC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19D5F2DC2720224600436446 /* BNBEffectPlayerC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		19FD8CA626DE188000137552 /* VidyoClientIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FD8CA426DE188000137552 /* VidyoClientIOS.framework */; };
 		19FD8CA726DE188000137552 /* VidyoClientIOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19FD8CA426DE188000137552 /* VidyoClientIOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		19FD8CA826DE188000137552 /* BanubaEffectPlayer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FD8CA526DE188000137552 /* BanubaEffectPlayer.xcframework */; };
-		19FD8CA926DE188000137552 /* BanubaEffectPlayer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19FD8CA526DE188000137552 /* BanubaEffectPlayer.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		19FD8CAC26DE18E500137552 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FD8CAB26DE188900137552 /* libc++.tbd */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				19FD8CA926DE188000137552 /* BanubaEffectPlayer.xcframework in Embed Frameworks */,
+				19D5F2DE2720224600436446 /* BNBEffectPlayerC.xcframework in Embed Frameworks */,
 				19FD8CA726DE188000137552 /* VidyoClientIOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -58,6 +58,7 @@
 		1968614025ECF80500F85799 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1968614725ECF87600F85799 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1968614E25ED082000F85799 /* VidyoConnector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VidyoConnector-Bridging-Header.h"; sourceTree = "<group>"; };
+		19D5F2DC2720224600436446 /* BNBEffectPlayerC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BNBEffectPlayerC.xcframework; path = "VidyoConnector/VidyoClient-iOSSDK/lib/ios/Banuba/BNBEffectPlayerC.xcframework"; sourceTree = "<group>"; };
 		19FD8CA426DE188000137552 /* VidyoClientIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VidyoClientIOS.framework; path = "VidyoConnector/VidyoClient-iOSSDK/lib/ios/VidyoClientIOS.framework"; sourceTree = "<group>"; };
 		19FD8CA526DE188000137552 /* BanubaEffectPlayer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BanubaEffectPlayer.xcframework; path = "VidyoConnector/VidyoClient-iOSSDK/lib/ios/Banuba/BanubaEffectPlayer.xcframework"; sourceTree = "<group>"; };
 		19FD8CAB26DE188900137552 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -70,8 +71,8 @@
 			files = (
 				193FB6E625ED0C04005CC825 /* CoreLocation.framework in Frameworks */,
 				19FD8CA626DE188000137552 /* VidyoClientIOS.framework in Frameworks */,
+				19D5F2DD2720224600436446 /* BNBEffectPlayerC.xcframework in Frameworks */,
 				19FD8CAC26DE18E500137552 /* libc++.tbd in Frameworks */,
-				19FD8CA826DE188000137552 /* BanubaEffectPlayer.xcframework in Frameworks */,
 				193FB6E125ED0BDF005CC825 /* CoreMedia.framework in Frameworks */,
 				193FB6E325ED0BE8005CC825 /* SystemConfiguration.framework in Frameworks */,
 				193FB6DD25ED0BCB005CC825 /* AudioToolbox.framework in Frameworks */,
@@ -85,6 +86,7 @@
 		193FB6D525ED0A35005CC825 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19D5F2DC2720224600436446 /* BNBEffectPlayerC.xcframework */,
 				19FD8CAB26DE188900137552 /* libc++.tbd */,
 				19FD8CA526DE188000137552 /* BanubaEffectPlayer.xcframework */,
 				19FD8CA426DE188000137552 /* VidyoClientIOS.framework */,
@@ -371,7 +373,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.connector.VidyoPlatform;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.connector.VidyoPlatform.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VidyoConnector/VidyoConnector-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -398,7 +400,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.connector.VidyoPlatform;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.connector.VidyoPlatform.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VidyoConnector/VidyoConnector-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
