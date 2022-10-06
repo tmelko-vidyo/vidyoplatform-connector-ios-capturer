@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5mZ-zE-AOt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5mZ-zE-AOt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -145,14 +146,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijl-bt-m1G">
-                                <rect key="frame" x="270" y="486" width="128" height="224"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="FQt-Z5-sFa"/>
-                                    <constraint firstAttribute="height" constant="224" id="yGu-4V-9oe"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZoM-jA-AsK" userLabel="VideoView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -236,13 +229,11 @@
                         <constraints>
                             <constraint firstItem="hVE-bk-VVT" firstAttribute="bottom" secondItem="vP4-zc-82f" secondAttribute="bottom" constant="48" id="21m-ys-qux"/>
                             <constraint firstItem="vP4-zc-82f" firstAttribute="leading" secondItem="hVE-bk-VVT" secondAttribute="leading" constant="16" id="4tB-JY-Zbk"/>
-                            <constraint firstItem="vP4-zc-82f" firstAttribute="top" secondItem="ijl-bt-m1G" secondAttribute="bottom" constant="16" id="5q3-Lt-VPm"/>
                             <constraint firstItem="ZoM-jA-AsK" firstAttribute="leading" secondItem="hVE-bk-VVT" secondAttribute="leading" id="KTc-tG-gkb"/>
                             <constraint firstAttribute="bottom" secondItem="ZoM-jA-AsK" secondAttribute="bottom" id="Rfq-5P-lv8"/>
                             <constraint firstItem="ZoM-jA-AsK" firstAttribute="trailing" secondItem="hVE-bk-VVT" secondAttribute="trailing" id="Vqc-DN-gri"/>
                             <constraint firstItem="d9a-e9-9pt" firstAttribute="leading" secondItem="hVE-bk-VVT" secondAttribute="leading" constant="16" id="Weo-p9-NCU"/>
                             <constraint firstItem="d9a-e9-9pt" firstAttribute="top" secondItem="hVE-bk-VVT" secondAttribute="top" constant="16" id="bMJ-sp-mIT"/>
-                            <constraint firstItem="hVE-bk-VVT" firstAttribute="trailing" secondItem="ijl-bt-m1G" secondAttribute="trailing" constant="16" id="oio-xp-0yf"/>
                             <constraint firstItem="Wvg-CT-KGu" firstAttribute="centerX" secondItem="kfp-Sd-6tT" secondAttribute="centerX" id="pCI-WP-1iD"/>
                             <constraint firstItem="ZoM-jA-AsK" firstAttribute="top" secondItem="kfp-Sd-6tT" secondAttribute="top" id="yPp-Vo-fnJ"/>
                             <constraint firstItem="hVE-bk-VVT" firstAttribute="trailing" secondItem="vP4-zc-82f" secondAttribute="trailing" constant="16" id="yeP-4t-XMp"/>
@@ -254,7 +245,6 @@
                         <outlet property="callButton" destination="me4-PW-dTP" id="cXJ-bf-TiG"/>
                         <outlet property="cameraButton" destination="HTA-bP-z33" id="ecO-dU-pGY"/>
                         <outlet property="libVersion" destination="9Pi-Pz-6hc" id="fwn-oM-wWP"/>
-                        <outlet property="localView" destination="ijl-bt-m1G" id="UlW-5C-vy8"/>
                         <outlet property="microphoneButton" destination="MiV-9I-3kH" id="ZlE-Yy-aBi"/>
                         <outlet property="progress" destination="Wvg-CT-KGu" id="Gbq-Ib-irD"/>
                         <outlet property="videoView" destination="ZoM-jA-AsK" id="Kvv-SL-dmo"/>
