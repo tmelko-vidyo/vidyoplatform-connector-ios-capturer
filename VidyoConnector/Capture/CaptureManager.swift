@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 import AVFoundation
 
+protocol ICaptureManagerState {
+    func onStateChanged(capturing: Bool)
+}
+
 @objc class CaptureManager: NSObject {
     
     private let position = AVCaptureDevice.Position.front
@@ -25,22 +29,42 @@ import AVFoundation
     private var captureEnabled = false
     
     private var connector: VCConnector?
-    private var virtualSource: VCVirtualVideoSource?
+    private var activeVirtualSource: VCVirtualVideoSource?
     
-    init(connector: VCConnector?, previewView: UIView) {
-        super.init()
-        connector?.select(nil as VCLocalCamera?)
-        
-        sessionQueue.async { [unowned self] in
-            self.configureSession()
-        }
-        
+    private var listener: ICaptureManagerState?
+    
+    init(connector: VCConnector?, listener: ICaptureManagerState?) {
+        self.listener = listener
         self.connector = connector
+        super.init()
+                
+        sessionQueue.async { [unowned self] in self.configureSession() }
+        
+        connector?.select(nil as VCLocalCamera?)
+        connector?.registerVirtualVideoSourceEventListener(self)
     }
     
     public func startCapturer() {
-        connector?.registerVirtualVideoSourceEventListener(self)
-        connector?.createVirtualVideoSource(.CAMERA, id: "VirtualCamera#1001", name: "VCX")
+        if (captureEnabled) { return }
+        
+        if (self.activeVirtualSource == nil) {
+            print("CaptureManager: create vitrual source")
+            connector?.createVirtualVideoSource(.CAMERA, id: "VirtualCamera#100", name: "VCX")
+        } else {
+            connector?.selectVirtualCamera(activeVirtualSource)
+            print("CaptureManager: select vitrual source")
+        }
+    }
+    
+    public func stopCapturer() {
+        if (!captureEnabled) { return }
+        
+        stopSession()
+        self.connector?.selectVirtualCamera(nil)
+    }
+    
+    public func isCapturing() -> Bool {
+        return captureEnabled
     }
     
     public func destroy() {
@@ -66,9 +90,10 @@ extension CaptureManager: VCConnectorIRegisterVirtualVideoSourceEventListener {
     func onVirtualVideoSourceAdded(_ virtualVideoSource: VCVirtualVideoSource!) {
         switch virtualVideoSource.type {
         case .CAMERA:
-            self.virtualSource = virtualVideoSource
-            self.connector?.selectVirtualCamera(virtualSource);
-            print("Virtual camera source created and selected. \(virtualVideoSource.id ?? "None")")
+            self.activeVirtualSource = virtualVideoSource;
+            let selected = self.connector?.selectVirtualCamera(virtualVideoSource)
+            
+            print("CaptureManager: Virtual source created and selected: \(String(describing: selected)). ID: \(virtualVideoSource.id ?? "None")")
         default:
             break
         }
@@ -77,8 +102,7 @@ extension CaptureManager: VCConnectorIRegisterVirtualVideoSourceEventListener {
     func onVirtualVideoSourceRemoved(_ virtualVideoSource: VCVirtualVideoSource!) {
         switch virtualVideoSource.type {
         case .CAMERA:
-            print("Virtual camera source removed. ID: \(virtualVideoSource.id ?? "None")")
-            self.virtualSource = nil
+            print("CaptureManager: Virtual source removed. ID: \(virtualVideoSource.id ?? "None")")
         default:
             break
         }
@@ -87,16 +111,19 @@ extension CaptureManager: VCConnectorIRegisterVirtualVideoSourceEventListener {
     func onVirtualVideoSourceStateUpdated(_ virtualVideoSource: VCVirtualVideoSource!, state: VCDeviceState) {
         switch state {
         case .started:
-            captureEnabled = true
-            print("Virtual camera source started. Start session feed.")
+            print("CaptureManager: Virtual source started. Start session feed. ID: \(String(describing: virtualVideoSource.id))")
             startSession()
+            captureEnabled = true
+            self.listener?.onStateChanged(capturing: true)
             break
         case .stopped:
-            captureEnabled = false
-            print("Virtual camera source stopped. Stop session feed.")
+            print("CaptureManager: Virtual source stopped. Stop session feed. ID: \(String(describing: virtualVideoSource.id))")
             stopSession()
+            captureEnabled = false
+            self.listener?.onStateChanged(capturing: false)
             break
         default:
+            print("CaptureManager: Virtual source state updated: \(state)")
             break
         }
     }
@@ -136,13 +163,6 @@ extension CaptureManager: VCVideoFrameIConstructFromKnownFormatWithExternalBuffe
 // MARK: Private API
 
 extension CaptureManager {
-    
-    private func stopCapturer() {
-        stopSession()
-        self.connector?.selectVirtualCamera(nil)
-        self.virtualSource = nil
-    }
-    
     private func startSession() {
         sessionQueue.async { [unowned self] in
             self.captureSession.startRunning()
@@ -233,6 +253,6 @@ extension CaptureManager {
             return
         }
         
-        self.virtualSource?.onFrame(frame, mediaFormat: .format420f)
+        self.activeVirtualSource?.onFrame(frame, mediaFormat: .format420f)
     }
 }

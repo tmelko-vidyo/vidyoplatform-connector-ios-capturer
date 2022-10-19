@@ -14,6 +14,7 @@ class ConferenceViewController: UIViewController {
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var microphoneButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
     @IBOutlet weak var libVersion: UILabel!
     @IBOutlet weak var progress: UIActivityIndicatorView!
@@ -24,6 +25,8 @@ class ConferenceViewController: UIViewController {
     
     private var connector: VCConnector?
     
+    private var captureManager: CaptureManager?
+        
     struct CallState {
         var hasDevicesSelected = true
         var cameraMuted = false
@@ -43,6 +46,7 @@ class ConferenceViewController: UIViewController {
                                 logFileFilter: "warning debug@VidyoClient debug@VidyoConnector".cString(using: .utf8),
                                 logFileName: "".cString(using: .utf8),
                                 userData: 0)
+        self.captureManager = .init(connector: self.connector, listener: self)
         
         // Orientation change observer
         NotificationCenter.default.addObserver(self, selector: #selector(onOrientationChanged),
@@ -140,7 +144,7 @@ class ConferenceViewController: UIViewController {
     @IBAction func onMicStateChanged(_ sender: Any) {
         callState.micMuted = !callState.micMuted
         updateCallState()
-        
+
         connector?.setMicrophonePrivacy(callState.micMuted)
     }
     
@@ -153,6 +157,22 @@ class ConferenceViewController: UIViewController {
         }
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onShare(_ sender: Any) {
+        guard let captureManager = self.captureManager else { fatalError() }
+        if captureManager.isCapturing() {
+            captureManager.stopCapturer()
+        } else {
+            captureManager.startCapturer()
+        }
+    }
+}
+
+extension ConferenceViewController: ICaptureManagerState {
+    
+    func onStateChanged(capturing: Bool) {
+        self.shareButton.tintColor = capturing ? UIColor.red : UIColor.green
     }
 }
 
@@ -183,6 +203,7 @@ extension ConferenceViewController: VCConnectorIConnect {
             
             this.progress.isHidden = true
             this.callState.connected = false
+            this.captureManager?.stopCapturer()
 
             this.updateCallState()
             
@@ -199,7 +220,8 @@ extension ConferenceViewController: VCConnectorIConnect {
             
             this.progress.isHidden = true
             this.callState.connected = false
-            
+            this.captureManager?.stopCapturer()
+
             this.updateCallState()
             
             this.libVersion.text = "Disconnected: \(reason)"

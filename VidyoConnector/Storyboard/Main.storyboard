@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5mZ-zE-AOt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5mZ-zE-AOt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -154,10 +154,10 @@
                                 <rect key="frame" x="16" y="726" width="382" height="88"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TZW-f4-KHH">
-                                        <rect key="frame" x="83" y="3" width="216" height="82"/>
+                                        <rect key="frame" x="43" y="3" width="296" height="82"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="txE-KZ-oG6">
-                                                <rect key="frame" x="0.0" y="0.0" width="216" height="56"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="56"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="me4-PW-dTP">
                                                         <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
@@ -192,10 +192,27 @@
                                                             <action selector="onMicStateChanged:" destination="Pyq-cE-7dX" eventType="touchUpInside" id="fST-aJ-dP2"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xar-0w-H8k">
+                                                        <rect key="frame" x="240" y="0.0" width="56" height="56"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Xar-0w-H8k" secondAttribute="height" multiplier="1:1" id="YQW-D5-vkY"/>
+                                                            <constraint firstAttribute="height" constant="56" id="c3v-nc-XL4"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button" image="airport.express" catalog="system"/>
+                                                        <buttonConfiguration key="configuration" style="tinted" image="display" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="onShare:" destination="Pyq-cE-7dX" eventType="touchUpInside" id="MSj-vv-YOL"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Xar-0w-H8k" firstAttribute="width" secondItem="Xar-0w-H8k" secondAttribute="height" multiplier="1:1" id="i1p-E8-jE7"/>
+                                                </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pi-Pz-6hc">
-                                                <rect key="frame" x="82.5" y="64" width="51.5" height="18"/>
+                                                <rect key="frame" x="122.5" y="64" width="51.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -214,7 +231,7 @@
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9a-e9-9pt">
-                                <rect key="frame" x="16" y="60" width="52.5" height="22"/>
+                                <rect key="frame" x="16" y="64" width="52.5" height="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Back" image="chevron.backward" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -247,6 +264,7 @@
                         <outlet property="libVersion" destination="9Pi-Pz-6hc" id="fwn-oM-wWP"/>
                         <outlet property="microphoneButton" destination="MiV-9I-3kH" id="ZlE-Yy-aBi"/>
                         <outlet property="progress" destination="Wvg-CT-KGu" id="Gbq-Ib-irD"/>
+                        <outlet property="shareButton" destination="Xar-0w-H8k" id="juw-lw-mub"/>
                         <outlet property="videoView" destination="ZoM-jA-AsK" id="Kvv-SL-dmo"/>
                     </connections>
                 </viewController>
@@ -257,9 +275,11 @@
     </scenes>
     <resources>
         <image name="Image" width="90" height="90"/>
+        <image name="airport.express" catalog="system" width="117" height="128"/>
         <image name="callStart" width="256" height="256"/>
         <image name="cameraOn" width="256" height="256"/>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="display" catalog="system" width="128" height="101"/>
         <image name="microphoneOn" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

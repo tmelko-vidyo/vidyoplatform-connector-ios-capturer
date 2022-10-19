@@ -378,7 +378,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/VidyoConnector",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.platform.connector;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.platform.connector.taras;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VidyoConnector/VidyoConnector-Bridging-Header.h";
@@ -416,7 +416,7 @@
 					"$(PROJECT_DIR)/VidyoConnector",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.platform.connector;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.platform.connector.taras;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VidyoConnector/VidyoConnector-Bridging-Header.h";
